@@ -161,8 +161,8 @@ run_listbox_with_data (Listbox * l, const void *select)
         if (e != NULL)
         {
             /* The assert guards against returning a soon-to-be deallocated
-             * pointer (as in listbox_add_item(..., TRUE)). */
-            g_assert (!e->free_data);
+             * pointer (as in listbox_add_item(..., func)). */
+            g_assert (e->free_data == NULL);
             val = e->data;
         }
     }

@@ -79,8 +79,8 @@ listbox_entry_free (void *data)
     WLEntry *e = data;
 
     g_free (e->text);
-    if (e->free_data)
-        g_free (e->data);
+    if (e->free_data != NULL)
+        e->free_data (e->data);
     g_free (e);
 }
 
@@ -799,7 +799,7 @@ listbox_remove_list (WListbox * l)
 
 char *
 listbox_add_item (WListbox * l, listbox_append_t pos, int hotkey, const char *text, void *data,
-                  gboolean free_data)
+                  GDestroyNotify free_data)
 {
     WLEntry *entry;
 

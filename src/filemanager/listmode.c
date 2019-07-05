@@ -120,8 +120,7 @@ select_new_item (void)
     mylistbox = create_listbox_window (20, 12, "Add listing format item", listmode_section);
     for (i = 0; possible_items[i]; i++)
     {
-        listbox_add_item (mylistbox->list, LISTBOX_APPEND_AT_END, 0, possible_items[i], NULL,
-                          FALSE);
+        listbox_add_item (mylistbox->list, LISTBOX_APPEND_AT_END, 0, possible_items[i], NULL, NULL);
     }
 
     i = run_listbox (mylistbox);
@@ -156,7 +155,7 @@ badd_cback (int action)
     char *s = select_new_item ();
     if (s)
     {
-        listbox_add_item (l_listmode, LISTBOX_APPEND_AT_END, 0, s, NULL, FALSE);
+        listbox_add_item (l_listmode, LISTBOX_APPEND_AT_END, 0, s, NULL, NULL);
         g_free (s);
     }
     return 0;
@@ -251,7 +250,7 @@ init_listmode (char *oldlistformat)
 
     while (s)
     {
-        listbox_add_item (l_listmode, LISTBOX_APPEND_AT_END, 0, s, NULL, FALSE);
+        listbox_add_item (l_listmode, LISTBOX_APPEND_AT_END, 0, s, NULL, NULL);
         s = strtok (NULL, ",");
     }
 

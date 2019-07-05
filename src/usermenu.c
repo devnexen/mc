@@ -1119,7 +1119,7 @@ user_menu_cmd (const WEdit * edit_widget, const char *menu_file, int selected_en
             {
                 p = entries[i];
                 LISTBOX_APPEND_TEXT (listbox, (unsigned char) p[0],
-                                     extract_line (p, p + MAX_ENTRY_LEN), p, FALSE);
+                                     extract_line (p, p + MAX_ENTRY_LEN), p, NULL);
             }
             /* Select the default entry */
             listbox_select_entry (listbox->list, selected);

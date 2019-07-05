@@ -562,14 +562,14 @@ user_group_button_cb (WButton * button, int action)
         chl_list =
             listbox_new (1, 1, WIDGET (chl_dlg)->lines - 2, WIDGET (chl_dlg)->cols - 2, FALSE,
                          NULL);
-        listbox_add_item (chl_list, LISTBOX_APPEND_AT_END, 0, "<Unknown>", NULL, FALSE);
+        listbox_add_item (chl_list, LISTBOX_APPEND_AT_END, 0, "<Unknown>", NULL, NULL);
         if (is_owner)
         {
             /* get and put user names in the listbox */
             setpwent ();
             while ((chl_pass = getpwent ()) != NULL)
                 listbox_add_item (chl_list, LISTBOX_APPEND_SORTED, 0, chl_pass->pw_name, NULL,
-                                  FALSE);
+                                  NULL);
             endpwent ();
             fe = listbox_search_text (chl_list, get_owner (sf_stat.st_uid));
         }
@@ -578,8 +578,7 @@ user_group_button_cb (WButton * button, int action)
             /* get and put group names in the listbox */
             setgrent ();
             while ((chl_grp = getgrent ()) != NULL)
-                listbox_add_item (chl_list, LISTBOX_APPEND_SORTED, 0, chl_grp->gr_name, NULL,
-                                  FALSE);
+                listbox_add_item (chl_list, LISTBOX_APPEND_SORTED, 0, chl_grp->gr_name, NULL, NULL);
             endgrent ();
             fe = listbox_search_text (chl_list, get_group (sf_stat.st_gid));
         }
