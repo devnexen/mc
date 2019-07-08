@@ -145,6 +145,7 @@ quick_create_labeled_input (GArray * widgets, int *y, int x, quick_widget_t * qu
         break;
 
     default:
+        g_free (label.quick_widget);
         return;
     }
 
